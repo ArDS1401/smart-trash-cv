@@ -3,8 +3,7 @@
 | Komponen | Isian Mahasiswa |
 |----------|-----------------|
 | Nama / NIM | Arie Dwi Sulistyo / 244311005 <br/> Jimli Dwi Assiddiqi / 244311011 |
-| Judul ide | Penerapan Computer Vision dalam Klasifikasi Biner Citra Sampah Recyclable vs Non-Recyclable Guna Pemilahan Otomatis pada Bank Sampah
-  |
+| Judul ide | Penerapan Computer Vision dalam Klasifikasi Biner Citra Sampah Recyclable vs Non-Recyclable Guna Pemilahan Otomatis pada Bank Sampah |
 | SDG & target yang dipilih | SDG 12 - Responsible Consumption and Production <br/> Dengan Target 12.5 – *By 2030, substantially reduce waste generation through prevention, reduction, recycling and reuse* (Pada tahun 2030, secara substansial mengurangi produksi limbah melalui pencegahan, pengurangan, daur ulang, dan penggunaan kembali) |
 | Masalah nyata yang diangkat | Pemilahan sampah di tingkat rumah tangga dan Bank Sampah masih dilakukan secara manual, lambat, serta rawan kesalahan subjektif manusia. Hal ini membuat material bernilai daur ulang (recyclable) sering tercampur dengan sampah organik/residu (non-recyclable), memicu kontaminasi silang yang menurunkan nilai ekonomis daur ulang, serta meningkatkan volume residu yang terbuang ke TPA. Pihak yang terdampak adalah petugas dan nasabah Bank Sampah, pengelola TPS3R, dan masyarakat sekitar TPA. |
 | Tugas ML (Target & jenis tugas) | **Jenis Tugas**: Klasifikasi Biner Citra (Binary Image Classification). <br/> **Target ($y$)**: Memprediksi label biner (1 = Recyclable / layak daur ulang; 0 = Non-Recyclable / organik & residu) dari input citra digital berwarna RGB ($H \times W \times 3$). |
