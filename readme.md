@@ -354,20 +354,20 @@ Berdasarkan hasil pemindaian terprogram pada seluruh 25.077 citra di `01_learnin
 
 ### 4.4 Exploratory Data Analysis (EDA) - (**OPSIONAL**)
 
-#### Visualisasi 1: Distribusi Kelas Citra Sampah (Non-Recyclable vs Recyclable)
-[reports/figures/01_class_distribution.png]
+### Visualisasi 1: Distribusi Kelas Citra Sampah (Non-Recyclable vs Recyclable)
+![Distribusi Kelas Citra Sampah](reports/figures/01_class_distribution.png)
 
 **Insight:**  
 Berdasarkan grafik batang di atas, kelas **Non-Recyclable (0)** memiliki jumlah sampel lebih banyak yaitu **13.966 citra (55,7%)**, sedangkan kelas **Recyclable (1)** berjumlah **11.111 citra (44,3%)**. Terdapat selisih sebesar 2.855 citra (11,4%) di antara kedua kelas. Ketidakseimbangan ringan (*mild class imbalance*) ini menunjukkan bahwa penggunaan metrik *Accuracy* saja belum cukup, sehingga evaluasi wajib dilengkapi dengan **Precision, Recall, dan F1-Score**, serta pembagian data harus menggunakan teknik **Stratified Split** agar proporsi 55,7% : 44,3% tetap terjaga di setiap subset.
 
-#### Visualisasi 2: Sebaran Resolusi Citra (Width vs Height) dan Deteksi Outliers Rasio Aspek
-[reports/figures/02_image_resolution_outliers.png]
+### Visualisasi 2: Sebaran Resolusi Citra (Width vs Height) dan Deteksi Outliers Rasio Aspek
+![Sebaran Resolusi Citra](reports/figures/02_image_resolution_outliers.png)
 
 **Insight:**  
 Plot sebaran (*scatter plot*) di sebelah kiri memperlihatkan pola melengkung yang khas: sebagian besar citra dalam dataset awalnya dikompresi dengan jumlah total luas piksel yang hampir seragam (sekitar 50.000 piksel per gambar, rata-rata lebar 252,42 px dan tinggi 203,78 px). Namun, *boxplot* di sebelah kanan mengungkapkan banyak titik *outliers* di atas batas kumis atas (*upper whisker*) dengan *aspect ratio* mencapai **8,70** (gambar sangat memanjang secara horizontal) maupun di bawah kumis bawah hingga **0,13** (gambar sangat sempit secara vertikal). Temuan ini menjadi alasan kuat mengapa tahap *Data Transformation* (Bab 5.3) wajib menerapkan proses **Resizing** ke dimensi seragam (misalnya `224x224` piksel untuk CNN dan `128x128` piksel untuk ekstraksi HOG) agar dimensi input seluruh model konsisten.
 
 #### Visualisasi 3: Sampel Citra Dataset per Kelas (Non-Recyclable vs Recyclable)
-[reports/figures/03_sample_images_grid.png]
+![Sampel Citra Dataset per Kelas](reports/figures/03_sample_images_grid.png)
 
 **Insight:**  
 Dari perbandingan sampel visual kedua kelas, terlihat perbedaan karakteristik warna dan struktur bentuk yang jelas:
