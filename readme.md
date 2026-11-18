@@ -297,25 +297,25 @@ Model deep learning yang sesuai dengan jenis data.
 ### 4.1 Informasi Dataset
 
 **Sumber Dataset:**
-1. **Dataset Utama 1 — Waste Classification Data (Sashaank Sekar - Kaggle):** [https://www.kaggle.com/datasets/techsash/waste-classification-data/](https://www.kaggle.com/datasets/techsash/waste-classification-data/) ([Dokumentasi Kurasi Mendeley Data](https://data.mendeley.com/datasets/n3gtgm9jxj/2))[cite: 19]
-2. **Dataset Utama 2 — MJU-Waste (Google Drive / GitHub):** [https://github.com/realwecan/mju-waste](https://github.com/realwecan/mju-waste)[cite: 19]
-3. **Dataset Utama 3 — TrashNet Dataset (GitHub):** [https://github.com/garythung/trashnet](https://github.com/garythung/trashnet)[cite: 19]
+1. **Dataset Utama 1 — Waste Classification Data (Sashaank Sekar - Kaggle):** [https://www.kaggle.com/datasets/techsash/waste-classification-data/](https://www.kaggle.com/datasets/techsash/waste-classification-data/) ([Dokumentasi Kurasi Mendeley Data](https://data.mendeley.com/datasets/n3gtgm9jxj/2))
+2. **Dataset Utama 2 — MJU-Waste (Google Drive / GitHub):** [https://github.com/realwecan/mju-waste](https://github.com/realwecan/mju-waste)
+3. **Dataset Utama 3 — TrashNet Dataset (GitHub):** [https://github.com/garythung/trashnet](https://github.com/garythung/trashnet)
 
 **Deskripsi Dataset (Hasil Eksplorasi pada Gabungan Ketiga Dataset):**
-- **Jumlah baris (rows / citra):** 35.029 citra gabungan dari seluruh sumber direktori penyimpanan lokal dan unduhan eksternal[cite: 19].
+- **Jumlah baris (rows / citra):** 35.029 citra gabungan dari seluruh sumber direktori penyimpanan lokal dan unduhan eksternal.
 - **Jumlah kolom (columns / features):** 3 channel warna matriks citra (`Red`, `Green`, `Blue`) serta 11 kolom atribut metadata hasil ekstraksi pada tabel eksplorasi (`image_path`, `sumber_dataset`, `split_asal`, `label_raw`, `label_biner`, `kategori`, `width`, `height`, `aspect_ratio`, `color_mode`, `file_size_kb`, `is_duplicate`).
 - **Tipe data:** Image (Citra Digital).
-- **Ukuran dataset:** 1.634,99 MB (total ukuran bersih seluruh file citra gabungan yang berhasil dipindai) dengan rata-rata ukuran per file 47,80 KB[cite: 19].
+- **Ukuran dataset:** 1.634,99 MB (total ukuran bersih seluruh file citra gabungan yang berhasil dipindai) dengan rata-rata ukuran per file 47,80 KB.
 - **Format file:** Images (`.jpg` / `.jpeg` / `.png`).
 
 **Distribusi Sampel Berdasarkan Sumber Dataset:**
 
 | Sumber Dataset | Jumlah Citra | Persentase |
 |:---|:---:|:---:|
-| **Kaggle (Waste Classification)** | 25.077 | 71,59%[cite: 19] |
-| **MJU-Waste (Google Drive)** | 7.425 | 21,20%[cite: 19] |
-| **TrashNet (GitHub)** | 2.527 | 7,21%[cite: 19] |
-| **Total Keseluruhan** | **35.029** | **100%**[cite: 19] |
+| **Kaggle (Waste Classification)** | 25.077 | 71,59% |
+| **MJU-Waste (Google Drive)** | 7.425 | 21,20% |
+| **TrashNet (GitHub)** | 2.527 | 7,21% |
+| **Total Keseluruhan** | **35.029** | **100%** |
 
 ---
 
@@ -325,18 +325,18 @@ Tabel berikut menjelaskan setiap fitur dan atribut metadata yang diekstraksi dar
 
 | Nama Fitur | Tipe Data | Deskripsi | Contoh Nilai |
 |------------|-----------|-----------|--------------|
-| `image` | Image Matrix (`uint8`) | Matriks piksel citra sampah berwarna (rata-rata ukuran 353,30 x 275,33 piksel dengan 3 channel warna)[cite: 19] | Array 3D `shape=(height, width, 3)`, nilai piksel `0–255` |
+| `image` | Image Matrix (`uint8`) | Matriks piksel citra sampah berwarna (rata-rata ukuran 353,30 x 275,33 piksel dengan 3 channel warna) | Array 3D `shape=(height, width, 3)`, nilai piksel `0–255` |
 | `image_path` | String | Lokasi path file citra di dalam direktori penyimpanan sistem | `/content/gdrive_dataset/...` atau path lokal |
-| `sumber_dataset` | Categorical | Asal repositori atau platform penyedia dataset | `"Kaggle"`, `"MJU-Waste"`, `"TrashNet"`[cite: 19] |
+| `sumber_dataset` | Categorical | Asal repositori atau platform penyedia dataset | `"Kaggle"`, `"MJU-Waste"`, `"TrashNet"` |
 | `split_asal` | Categorical | Pembagian subset bawaan dari direktori dataset asli | `"TRAIN"`, `"TEST"`, `"Combined"` |
 | `label_raw` | Categorical | Kode atau nama kelas asli dari folder direktori dataset | `"O"`, `"R"`, `"cardboard"`, dll. |
-| `label_biner` | Integer (Binary) | Label target numerik untuk pemodelan klasifikasi biner | `0` (Non-Recyclable), `1` (Recyclable)[cite: 20] |
-| `kategori` | Categorical | Nama deskriptif kelas target biner | `"Non-Recyclable (0)"`, `"Recyclable (1)"`[cite: 20] |
-| `width` | Integer | Lebar resolusi citra dalam satuan piksel (rata-rata: 353,30 px)[cite: 19] | `225`, `259`, `512` |
-| `height` | Integer | Tinggi resolusi citra dalam satuan piksel (rata-rata: 275,33 px)[cite: 19] | `183`, `194`, `384` |
-| `aspect_ratio` | Float | Rasio perbandingan lebar terhadap tinggi citra (`width / height`)[cite: 19] | `1.00`, `1.33`, `1.50` |
+| `label_biner` | Integer (Binary) | Label target numerik untuk pemodelan klasifikasi biner | `0` (Non-Recyclable), `1` (Recyclable) |
+| `kategori` | Categorical | Nama deskriptif kelas target biner | `"Non-Recyclable (0)"`, `"Recyclable (1)"` |
+| `width` | Integer | Lebar resolusi citra dalam satuan piksel (rata-rata: 353,30 px) | `225`, `259`, `512` |
+| `height` | Integer | Tinggi resolusi citra dalam satuan piksel (rata-rata: 275,33 px) | `183`, `194`, `384` |
+| `aspect_ratio` | Float | Rasio perbandingan lebar terhadap tinggi citra (`width / height`) | `1.00`, `1.33`, `1.50` |
 | `color_mode` | Categorical | Mode ruang warna file citra saat dibaca oleh library `PIL` | `"RGB"` (3 channel), `"P"` (Palette 1 channel) |
-| `file_size_kb` | Float | Ukuran penyimpanan file citra dalam satuan Kilobyte (KB) | `5.54`, `9.26`, `14.19`[cite: 19] |
+| `file_size_kb` | Float | Ukuran penyimpanan file citra dalam satuan Kilobyte (KB) | `5.54`, `9.26`, `14.19` |
 
 ---
 
@@ -344,11 +344,11 @@ Tabel berikut menjelaskan setiap fitur dan atribut metadata yang diekstraksi dar
 
 Berdasarkan hasil pemindaian terprogram pada seluruh 35.029 citra gabungan[cite: 19], ditemukan kondisi dan permasalahan data sebagai berikut:
 
-- **Missing Values:** **Sangat minim / hampir tidak ada**. Hanya terdapat **1 file** yang terdeteksi *corrupted* atau bermasalah dari total 35.029 citra[cite: 19].
-- **Duplicate Data:** **Ada, sebanyak 336 citra duplikat (0,96% dari total data gabungan)** berdasarkan pemeriksaan nilai *hash* MD5 yang identik antar file[cite: 19]. Citra duplikat ini dibersihkan pada tahap *Data Cleaning* untuk mencegah kebocoran data (*data leakage*) antar subset.
-- **Outliers:** **Ada, pada atribut dimensi resolusi (`width`, `height`) dan `aspect_ratio`**[cite: 21]. Mayoritas citra berada pada rentang kuartil 25%–75% (`width` 225–512 px, `height` 183–384 px)[cite: 19]. Namun, ditemukan nilai ekstrem (*outliers*) dengan rasio aspek (*aspect ratio*) mencapai **8,70** maupun ukuran file maksimum hingga **559,59 KB**[cite: 19, 21], sehingga proses penyeragaman ukuran (*resizing*) mutlak diperlukan sebelum masuk ke tahap pemodelan.
-- **Imbalanced Data:** **Ada (ketidakseimbangan kelas ringan / *mild imbalance*)** dengan total **14.103 citra Non-Recyclable (40,3%)** berbanding **20.926 citra Recyclable (59,7%)**[cite: 20]. Kondisi ini dikelola melalui strategi *stratified splitting*, penyesuaian bobot kelas (*class weight*), serta penggunaan metrik evaluasi **F1-Score**.
-- **Noise & Variasi Lingkungan:** **Ada**. Citra gabungan memiliki latar belakang yang beragam (seperti kondisi ruangan, alam, meja, hingga variasi pencahayaan dan sudut ambil gambar)[cite: 22].
+- **Missing Values:** **Sangat minim / hampir tidak ada**. Hanya terdapat **1 file** yang terdeteksi *corrupted* atau bermasalah dari total 35.029 citra.
+- **Duplicate Data:** **Ada, sebanyak 336 citra duplikat (0,96% dari total data gabungan)** berdasarkan pemeriksaan nilai *hash* MD5 yang identik antar file. Citra duplikat ini dibersihkan pada tahap *Data Cleaning* untuk mencegah kebocoran data (*data leakage*) antar subset.
+- **Outliers:** **Ada, pada atribut dimensi resolusi (`width`, `height`) dan `aspect_ratio`**. Mayoritas citra berada pada rentang kuartil 25%–75% (`width` 225–512 px, `height` 183–384 px). Namun, ditemukan nilai ekstrem (*outliers*) dengan rasio aspek (*aspect ratio*) mencapai **8,70** maupun ukuran file maksimum hingga **559,59 KB**, sehingga proses penyeragaman ukuran (*resizing*) mutlak diperlukan sebelum masuk ke tahap pemodelan.
+- **Imbalanced Data:** **Ada (ketidakseimbangan kelas ringan / *mild imbalance*)** dengan total **14.103 citra Non-Recyclable (40,3%)** berbanding **20.926 citra Recyclable (59,7%)**. Kondisi ini dikelola melalui strategi *stratified splitting*, penyesuaian bobot kelas (*class weight*), serta penggunaan metrik evaluasi **F1-Score**.
+- **Noise & Variasi Lingkungan:** **Ada**. Citra gabungan memiliki latar belakang yang beragam (seperti kondisi ruangan, alam, meja, hingga variasi pencahayaan dan sudut ambil gambar).
 - **Data Quality Issues:** **Inkonsistensi Mode Warna (*Color Mode*)**. Sebagian kecil citra menggunakan format selain standar RGB 3-channel, yang memerlukan penanganan konversi otomatis agar tidak menimbulkan *error* dimensi matriks saat ekstraksi fitur maupun pelatihan model CNN.
 - **Asumsi Data (i.i.d., distribusi train-test, potensi data leakage):** Sampel citra diasumsikan *independent and identically distributed* (i.i.d.). Potensi *data leakage* diantisipasi dengan mendeteksi dan menghapus duplikat *hash* MD5 serta memastikan proses *scaling* atau normalisasi hanya diterapkan setelah pemisahan data latih dan uji.
 
@@ -357,24 +357,24 @@ Berdasarkan hasil pemindaian terprogram pada seluruh 35.029 citra gabungan[cite:
 ### 4.4 Exploratory Data Analysis (EDA) - (**OPSIONAL**)
 
 ### Visualisasi 1: Distribusi Kelas Citra Sampah (Non-Recyclable vs Recyclable)
-![Distribusi Kelas Citra Sampah](reports/figures/01_class_distribution.png)[cite: 20]
+![Distribusi Kelas Citra Sampah](reports/figures/01_class_distribution.png)
 
 **Insight:**  
-Berdasarkan grafik batang di atas, kelas **Non-Recyclable (0)** memiliki jumlah sampel sebanyak **14.103 citra (40,3%)**, sedangkan kelas **Recyclable (1)** berjumlah **20.926 citra (59,7%)**[cite: 20]. Ketidakseimbangan kelas ini menunjukkan bahwa evaluasi performa model tidak boleh hanya bergantung pada *Accuracy*, melainkan wajib dilengkapi dengan **Precision, Recall, dan F1-Score**, serta pembagian data harus menggunakan teknik **Stratified Split** agar proporsi kelas tetap terjaga di setiap subset.
+Berdasarkan grafik batang di atas, kelas **Non-Recyclable (0)** memiliki jumlah sampel sebanyak **14.103 citra (40,3%)**, sedangkan kelas **Recyclable (1)** berjumlah **20.926 citra (59,7%)**. Ketidakseimbangan kelas ini menunjukkan bahwa evaluasi performa model tidak boleh hanya bergantung pada *Accuracy*, melainkan wajib dilengkapi dengan **Precision, Recall, dan F1-Score**, serta pembagian data harus menggunakan teknik **Stratified Split** agar proporsi kelas tetap terjaga di setiap subset.
 
 ### Visualisasi 2: Sebaran Resolusi Citra (Width vs Height) dan Deteksi Outliers Rasio Aspek
-![Sebaran Resolusi Citra](reports/figures/02_image_resolution_outliers.png)[cite: 21]
+![Sebaran Resolusi Citra](reports/figures/02_image_resolution_outliers.png)
 
 **Insight:**  
-Plot sebaran (*scatter plot*) di sebelah kiri memperlihatkan variasi sebaran dimensi piksel dari gabungan berbagai sumber dataset eksternal. Sementara itu, *boxplot* di sebelah kanan mendeteksi sejumlah titik *outliers* dengan *aspect ratio* ekstrem (mencapai batas atas hingga 8,70)[cite: 21]. Temuan ini memperkuat alasan mengapa tahap *Data Transformation* wajib menerapkan proses **Resizing** ke dimensi seragam (misalnya `224x224` piksel) agar ukuran tensor input ke model menjadi konsisten.
+Plot sebaran (*scatter plot*) di sebelah kiri memperlihatkan variasi sebaran dimensi piksel dari gabungan berbagai sumber dataset eksternal. Sementara itu, *boxplot* di sebelah kanan mendeteksi sejumlah titik *outliers* dengan *aspect ratio* ekstrem (mencapai batas atas hingga 8,70). Temuan ini memperkuat alasan mengapa tahap *Data Transformation* wajib menerapkan proses **Resizing** ke dimensi seragam (misalnya `224x224` piksel) agar ukuran tensor input ke model menjadi konsisten.
 
 #### Visualisasi 3: Sampel Citra Dataset per Kelas (Non-Recyclable vs Recyclable)
-![Sampel Citra Dataset per Kelas](reports/figures/03_sample_images_grid.png)[cite: 22]
+![Sampel Citra Dataset per Kelas](reports/figures/03_sample_images_grid.png)
 
 **Insight:**  
 Dari perbandingan sampel visual kedua kelas, terlihat perbedaan karakteristik warna dan struktur bentuk yang jelas:
-1. **Kelas Non-Recyclable (0)** (baris atas: sayuran, buah jeruk, daun, biji-bijian) didominasi oleh tekstur organik yang tidak beraturan serta spektrum warna hangat/alami (cokelat, hijau daun, oranye)[cite: 22].
-2. **Kelas Recyclable (1)** (baris bawah: botol plastik, gelas kaca, serpihan plastik biru, kemasan) memiliki garis tepi geometris yang tegas, permukaan yang memantulkan cahaya (kilap plastik/kaca), serta kontras warna buatan yang tajam[cite: 22].
+1. **Kelas Non-Recyclable (0)** (baris atas: sayuran, buah jeruk, daun, biji-bijian) didominasi oleh tekstur organik yang tidak beraturan serta spektrum warna hangat/alami (cokelat, hijau daun, oranye).
+2. **Kelas Recyclable (1)** (baris bawah: botol plastik, gelas kaca, serpihan plastik biru, kemasan) memiliki garis tepi geometris yang tegas, permukaan yang memantulkan cahaya (kilap plastik/kaca), serta kontras warna buatan yang tajam.
 Perbedaan karakteristik ini memvalidasi keputusan desain fitur pada proyek kami, yaitu menggabungkan **Color Histogram** (untuk menangkap perbedaan spektrum warna organik vs anorganik) dan **HOG / Convolutional Layers** (untuk menangkap pola garis tepi geometris pada objek daur ulang).
 
 ## 5. DATA PREPARATION  **\[L\]**
