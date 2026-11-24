@@ -296,47 +296,95 @@ Model deep learning yang sesuai dengan jenis data.
 
 ### 4.1 Informasi Dataset
 
-**Sumber Dataset:**
-1. **Dataset Utama 1 — Waste Classification Data (Sashaank Sekar - Kaggle):** [https://www.kaggle.com/datasets/techsash/waste-classification-data/](https://www.kaggle.com/datasets/techsash/waste-classification-data/) ([Dokumentasi Kurasi Mendeley Data](https://data.mendeley.com/datasets/n3gtgm9jxj/2))
-2. **Dataset Utama 2 — MJU-Waste (Google Drive / GitHub):** [https://github.com/realwecan/mju-waste](https://github.com/realwecan/mju-waste)
-3. **Dataset Utama 3 — TrashNet Dataset (GitHub):** [https://github.com/garythung/trashnet](https://github.com/garythung/trashnet)
+#### 4.1.1. Waste Classification Data
 
-**Deskripsi Dataset (Hasil Eksplorasi pada Gabungan Ketiga Dataset):**
-- **Jumlah baris (rows / citra):** 35.029 citra gabungan dari seluruh sumber direktori penyimpanan lokal dan unduhan eksternal.
-- **Jumlah kolom (columns / features):** 3 channel warna matriks citra (`Red`, `Green`, `Blue`) serta 11 kolom atribut metadata hasil ekstraksi pada tabel eksplorasi (`image_path`, `sumber_dataset`, `split_asal`, `label_raw`, `label_biner`, `kategori`, `width`, `height`, `aspect_ratio`, `color_mode`, `file_size_kb`, `is_duplicate`).
-- **Tipe data:** Image (Citra Digital).
-- **Ukuran dataset:** 1.634,99 MB (total ukuran bersih seluruh file citra gabungan yang berhasil dipindai) dengan rata-rata ukuran per file 47,80 KB.
-- **Format file:** Images (`.jpg` / `.jpeg` / `.png`).
+**Sumber Dataset:**  
+Dataset diperoleh dari repositori publik **Kaggle** pada proyek *Waste Classification Data* oleh Sashaank Sekar.  
+- **URL**: [https://www.kaggle.com/datasets/techsash/waste-classification-data/](https://www.kaggle.com/datasets/techsash/waste-classification-data/)
+- **Lisensi**: CC BY-SA 4.0 (*Creative Commons Attribution-ShareAlike 4.0 International*)
 
-**Distribusi Sampel Berdasarkan Sumber Dataset:**
+**Deskripsi Dataset:**
 
-| Sumber Dataset | Jumlah Citra | Persentase |
-|:---|:---:|:---:|
-| **Kaggle (Waste Classification)** | 25.077 | 71,59% |
-| **MJU-Waste (Google Drive)** | 7.425 | 21,20% |
-| **TrashNet (GitHub)** | 2.527 | 7,21% |
-| **Total Keseluruhan** | **35.029** | **100%** |
+- **Jumlah baris (rows / sampel citra)**: 25.077 citra mentah.
+- **Jumlah kolom (columns/features)**: Terdiri dari **data piksel citra RGB** dan **2 label kelas folder** (`O`: *Organic*, `R`: *Recyclable*) yang diturunkan menjadi **8 kolom metadata** (termasuk target biner `0`/`1`).
+- **Tipe data**: Image Data (Citra Digital RGB, mencakup 372 citra non-RGB sebelum standardisasi warna).
+- **Ukuran dataset**: ± 427 MB.
+- **Format file**: `.jpg`.
+
+---
+
+#### 4.1.2. TrashNet Dataset
+
+**Sumber Dataset:**  
+Dataset diperoleh dari repositori publik **GitHub** pada proyek *TrashNet* oleh Gary Thung dan Mindy Yang (Stanford CS 229).  
+- **URL**: [https://github.com/garythung/trashnet](https://github.com/garythung/trashnet)
+- **Lisensi**: MIT License
+
+**Deskripsi Dataset:**
+
+- **Jumlah baris (rows / sampel citra)**: 2.527 citra mentah.
+- **Jumlah kolom (columns/features)**: Terdiri dari **data piksel citra RGB** dan **6 label kelas folder** (*paper, glass, plastic, metal, cardboard, trash*) yang diturunkan menjadi **8 kolom metadata** (termasuk target biner `0`/`1`).
+- **Tipe data**: Image Data (Citra Digital RGB).
+- **Ukuran dataset**: ± 42,8 MB.
+- **Format file**: `.jpg`.
+
+---
+
+#### 4.1.3. MJU-Waste Dataset v1.0
+
+**Sumber Dataset:**  
+Dataset diperoleh dari repositori publik **GitHub** pada proyek *MJU-Waste* oleh Tao Wang et al. (*Minjiang University*).  
+- **URL**: [https://github.com/realwecan/mju-waste](https://github.com/realwecan/mju-waste)
+- **Lisensi**: MIT License
+
+**Deskripsi Dataset:**
+
+- **Jumlah baris (rows / sampel citra)**: **2.475 citra bersih** (`JPEGImages`).
+- **Jumlah kolom (columns/features)**: Terdiri dari **citra RGB**, *depth map*, dan *segmentation mask*, dengan **citra RGB** diambil dan diturunkan menjadi **8 kolom metadata** (target biner `1`: *Recyclable*).
+- **Tipe data**: Image Data (Citra Digital RGB).
+- **Ukuran dataset**: ± 1,45 GB (arsip lengkap multi-modalitas).
+- **Format file**: `.jpg` (citra RGB), `.png` (*depth map* & masker segmentasi), dan `.txt` (indeks partisi).
+
+**Distribusi Sampel Citra RGB Mentah Berdasarkan Sumber Dataset:**
+
+| Sumber Dataset | Jumlah Citra Mentah | Persentase | Citra Bersih (Pasca-Deduplikasi) |
+|:---|:---:|:---:|:---:|
+| **Waste Classification (Kaggle)** | 25.077 | 83,37% | 24.751 |
+| **TrashNet (GitHub)** | 2.527 | 8,40% | 2.524 |
+| **MJU-Waste (Google Drive)** | 2.475 | 8,23% | 2.475 |
+| **Total Keseluruhan** | **30.079** | **100,00%** | **29.750** |
+
+> *Catatan: Arsip mentah MJU-Waste memuat total 7.425 berkas, namun 4.950 berkas di antaranya merupakan peta kedalaman (`DepthImages`) dan masker segmentasi (`SegmentationClass`) sehingga hanya 2.475 citra warna RGB pada folder `JPEGImages` yang digunakan.*
 
 ---
 
 ### 4.2 Deskripsi Fitur
 
-Tabel berikut menjelaskan setiap fitur dan atribut metadata yang diekstraksi dari dataset citra gabungan pada tahap *Data Understanding*:
+Jelaskan setiap fitur/kolom yang ada dalam dataset.
+**Contoh tabel:**
+| Nama Fitur | Tipe Data | Deskripsi | Contoh Nilai |
+|------------|-----------|-----------|--------------|
+| id | Integer | ID unik data | 1, 2, 3 |
+| age | Integer | Usia (tahun) | 25, 30, 45 |
+| income | Float | Pendapatan (juta) | 5.5, 10.2 |
+| category | Categorical | Kategori produk | A, B, C |
+| text | String | Teks ulasan | "Produk bagus..." |
+| image | Image | Citra 224x224 RGB | Array 224x224x3 |
+| label | Categorical | Label target | 0, 1 atau "positif", "negatif" |
+
+**[Buat tabel deskripsi fitur Anda di sini]**
 
 | Nama Fitur | Tipe Data | Deskripsi | Contoh Nilai |
 |------------|-----------|-----------|--------------|
-| `image` | Image Matrix (`uint8`) | Matriks piksel citra sampah berwarna (rata-rata ukuran 353,30 x 275,33 piksel dengan 3 channel warna) | Array 3D `shape=(height, width, 3)`, nilai piksel `0–255` |
-| `image_path` | String | Lokasi path file citra di dalam direktori penyimpanan sistem | `/content/gdrive_dataset/...` atau path lokal |
-| `sumber_dataset` | Categorical | Asal repositori atau platform penyedia dataset | `"Kaggle"`, `"MJU-Waste"`, `"TrashNet"` |
-| `split_asal` | Categorical | Pembagian subset bawaan dari direktori dataset asli | `"TRAIN"`, `"TEST"`, `"Combined"` |
-| `label_raw` | Categorical | Kode atau nama kelas asli dari folder direktori dataset | `"O"`, `"R"`, `"cardboard"`, dll. |
-| `label_biner` | Integer (Binary) | Label target numerik untuk pemodelan klasifikasi biner | `0` (Non-Recyclable), `1` (Recyclable) |
-| `kategori` | Categorical | Nama deskriptif kelas target biner | `"Non-Recyclable (0)"`, `"Recyclable (1)"` |
-| `width` | Integer | Lebar resolusi citra dalam satuan piksel (rata-rata: 353,30 px) | `225`, `259`, `512` |
-| `height` | Integer | Tinggi resolusi citra dalam satuan piksel (rata-rata: 275,33 px) | `183`, `194`, `384` |
-| `aspect_ratio` | Float | Rasio perbandingan lebar terhadap tinggi citra (`width / height`) | `1.00`, `1.33`, `1.50` |
-| `color_mode` | Categorical | Mode ruang warna file citra saat dibaca oleh library `PIL` | `"RGB"` (3 channel), `"P"` (Palette 1 channel) |
-| `file_size_kb` | Float | Ukuran penyimpanan file citra dalam satuan Kilobyte (KB) | `5.54`, `9.26`, `14.19` |
+| `image` | Image (3D Array) | Citra digital sampah dalam ruang warna RGB 3-channel | Array `(H, W, 3)` dengan intensitas `0–255` |
+| `filename` | String | Nama berkas citra `.jpg` yang telah tervalidasi | `"O_12568.jpg"`, `"cardboard12.jpg"` |
+| `filepath` | String | Lokasi path berkas citra pada direktori penyimpanan sistem | `"/content/data/converted_rgb/..."` |
+| `source` | Categorical | Nama repositori sumber dataset asal | `"Waste_Classification"`, `"TrashNet"`, `"MJU_Waste"` |
+| `raw_class` | Categorical | Nama kelas atau kategori asli dari folder dataset sumber | `"O"`, `"R"`, `"plastic"`, `"JPEGImages"` |
+| `width` | Integer | Lebar resolusi citra dalam satuan piksel | `225`, `259`, `512` |
+| `height` | Integer | Tinggi resolusi citra dalam satuan piksel | `183`, `194`, `384` |
+| `target` *(target)* | Integer (Binary) | Label target numerik untuk klasifikasi biner | `0` (*Non-Recyclable*), `1` (*Recyclable*) |
+| `severity_label` *(target)* | Categorical | Label deskriptif kelas target hasil pemetaan biner | `"Non-Recyclable"`, `"Recyclable"` |
 
 ---
 
@@ -404,6 +452,15 @@ Missing Values:
 
 **\[Jelaskan langkah-langkah data cleaning yang Anda lakukan\]**
 
+```
+1. Validasi Direktori & Integritas Berkas Citra:
+  - Menyaring hanya direktori citra RGB yang valid, lalu memeriksa keterbacaan seluruh file.
+2. Standarisasi Ruang Warna (RGB 3-Channel):
+  - Mengonversi citra berformat non-RGB (mode palet `P`, transparan `RGBA`, dan *grayscale* `L`) ke standar RGB 3-channel serta menyimpan hasil konversinya agar tidak memicu error decoding pada pipeline TensorFlow.
+3. Penghapusan Duplikat:
+  - Melakukan pengecekan MD5 hash pada byte piksel RGB setiap citra untuk menghapus citra duplikat identik yang berpotensi menyebabkan bias evaluasi atau kebocoran data (data leakage) lintas partisi.
+```
+
 ### 5.2 Feature Engineering
 
 **Aktivitas:**
@@ -417,6 +474,20 @@ Missing Values:
 * Dimensionality reduction
 
 **\[Jelaskan feature engineering yang Anda lakukan\]**
+
+Pada tahap ini dilakukan pembentukan label target biner serta ekstraksi fitur numerik terstruktur dari citra sampah untuk kebutuhan pelatihan model *Machine Learning* klasik:
+
+1. **Creating New Features (*Target Derivation*):**
+   - Menyeragamkan seluruh label kategori asal dari tiga repositori dataset ke dalam variabel target klasifikasi biner baru (`target` $\in \{0, 1\}$) beserta label deskriptifnya (`severity_label`):
+     - **Kelas `0` (*Non-Recyclable*):** Dipetakan dari kategori `O` (*Organic*) pada *Waste Classification Data* dan kategori `trash` pada *TrashNet* (total **13.788 citra**).
+     - **Kelas `1` (*Recyclable*):** Dipetakan dari kategori `R` (*Recyclable*) pada *Waste Classification Data*, lima kategori daur ulang (`cardboard`, `glass`, `metal`, `paper`, `plastic`) pada *TrashNet*, serta seluruh citra pada folder `JPEGImages` *MJU-Waste* (total **15.962 citra**).
+
+2. **Feature Extraction (Vektor Fitur Klasik 6.180 Dimensi):**
+   - Setiap citra diseragamkan ukurannya menjadi $224 \times 224$ piksel dan diekstrak menjadi vektor fitur numerik bertipe `float32` dengan total **6.180 fitur**:
+     - **Color Histogram RGB (96 fitur — indeks `0:96`):** Menghitung distribusi intensitas warna pada 3 kanal warna (B, G, R) dengan masing-masing 32 *bins* ($3 \times 32 = 96$ fitur) yang dinormalisasi menggunakan `cv2.normalize`. Fitur ini digunakan secara khusus sebagai input **Model 1 (*Baseline Logistic Regression*)**.
+     - **Histogram of Oriented Gradients / HOG (6.084 fitur — indeks `96:6180`):** Mengekstrak informasi bentuk, kontur, dan gradien tepi objek pada citra *grayscale* menggunakan `skimage.feature.hog` (`orientations=9`, `pixels_per_cell=(16, 16)`, `cells_per_block=(2, 2)`, `block_norm="L2-Hys"`). Gabungan **96 fitur warna + 6.084 fitur HOG (total 6.180 fitur)** digunakan oleh **Model 2 (*Advanced Random Forest*)**.
+
+---
 
 ### 5.3 Data Transformation
 
@@ -462,6 +533,17 @@ Missing Values:
 
 **\[Jelaskan transformasi yang Anda lakukan\]**
 
+1. **Transformasi Data Tabular (`StandardScaler`):**
+   - Matriks fitur klasik mentah berukuran `(20825, 6180)` distandardisasi menggunakan `StandardScaler()` ($\mu = 0, \sigma = 1$) agar seluruh fitur histogram warna dan gradien HOG memiliki skala seragam sebelum dilatih pada algoritma berbasis optimasi gradien (*Logistic Regression*).
+   - Proses `fit_transform()` dijalankan **hanya pada `X_train_raw`**, sedangkan `X_val_raw` `(4462, 6180)` dan `X_test_raw` `(4463, 6180)` hanya dikenai `transform()`. Seluruh matriks hasil transformasi disimpan ke `classical_features.npz` dan objek *scaler* disimpan ke `standard_scaler.joblib`.
+
+2. **Transformasi & Augmentasi Data Image (`tf.data` Pipeline):**
+   - **Color Space Conversion & Resizing:** Sebanyak 372 citra non-RGB dikonversi menjadi RGB 3-channel pada tahap pembersihan, kemudian seluruh citra diubah ukurannya menjadi `(224, 224, 3)` dengan konfigurasi `BATCH_SIZE = 32` dan `prefetch(tf.data.AUTOTUNE)`.
+   - **Normalization:** Intensitas piksel `[0, 255]` dinormalisasi ke rentang **`[-1.00, 1.00]`** menggunakan `tf.keras.applications.mobilenet_v2.preprocess_input` agar sesuai dengan distribusi pralatih arsitektur *MobileNetV2*.
+   - **Data Augmentation (*Training Only*):** Diterapkan secara *on-the-fly* hanya pada `train_ds` (`seed=42`) menggunakan lapisan `RandomFlip("horizontal_and_vertical")`, `RandomRotation(0.2)`, `RandomZoom(0.15)`, dan `RandomContrast(0.15)` untuk memperkaya variasi orientasi serta pencahayaan objek sampah, sementara `val_ds` dan `test_ds` dibiarkan tanpa augmentasi.
+
+---
+
 ### 5.4 Data Splitting
 
 **Strategi pembagian data:**
@@ -487,6 +569,17 @@ Menggunakan stratified split untuk mempertahankan distribusi kelas:
 
 **\[Jelaskan strategi splitting Anda dan alasannya\]**
 
+```
+Dataset dibagi menjadi tiga partisi terpisah dengan random_state = 42 untuk menjamin reproducibility:
+- Training set   : 70% (20.825 samples) -> Non-Recyclable: 9.652 | Recyclable: 11.173
+- Validation set : 15% (4.462 samples)  -> Non-Recyclable: 2.068 | Recyclable: 2.394
+- Test set       : 15% (4.463 samples)  -> Non-Recyclable: 2.068 | Recyclable: 2.395
+```
+
+> Pembagian dataset dilakukan **sebelum** proses *feature scaling* dan perhitungan bobot kelas menggunakan fungsi `train_test_split` dua tahap (`70% : 30%`, lalu `30%` dibagi `50% : 50%` menjadi `15%` validasi dan `15%` uji). Stratifikasi diterapkan pada kolom gabungan **`source + "_" + target`** agar setiap partisi (`train_meta.csv`, `val_meta.csv`, dan `test_meta.csv`) memiliki proporsi sampel yang identik baik dari sisi asal repositori maupun kelas biner (*46,35% Non-Recyclable* dan *53,65% Recyclable*).
+
+---
+
 ### 5.5 Data Balancing (jika diperlukan)
 
 **Teknik yang digunakan:**
@@ -501,18 +594,42 @@ Menggunakan stratified split untuk mempertahankan distribusi kelas:
 
 **\[Jelaskan jika Anda melakukan data balancing\]**
 
+Setelah penggabungan tiga sumber dataset, proporsi kelas pada *training set* tergolong relatif seimbang (**46,35% *Non-Recyclable*** berbanding **53,65% *Recyclable***). 
+Oleh karena itu, penyeimbangan data dilakukan tanpa menduplikasi atau menghapus sampel fisik, melainkan menggunakan pembobotan kelas otomatis (`compute_class_weight(class_weight="balanced")`) yang dihitung **hanya dari label training (`y_train`)** dan disimpan ke `class_weights.json`:
+
+- **Class Weight `0` (*Non-Recyclable*):** **`1.0788`** (memberikan penalti kesalahan sedikit lebih besar karena jumlah sampelnya lebih sedikit).
+- **Class Weight `1` (*Recyclable*):** **`0.9319`** (menyesuaikan penalti secara proporsional terhadap kelas mayoritas).
+
+---
+
 ### 5.6 Ringkasan Data Preparation
 
 **Per langkah, jelaskan:**
 
-1. **Apa** yang dilakukan
-   **\[Jelaskan \]**
+1. **Data Cleaning**
+   - **Apa yang dilakukan:** Menyaring direktori citra RGB yang valid dari 3 sumber dataset (30.079 citra mentah), memeriksa integritas file (0 rusak), mengonversi 372 citra non-RGB ke RGB 3-channel, serta menghapus 329 citra duplikat identik hingga tersisa **29.750 citra bersih**.
+   - **Mengapa penting:** Mencegah *error* pembacaan dimensi kanal warna pada *pipeline* TensorFlow serta menghilangkan risiko kebocoran data (*data leakage*) akibat gambar kembar identik yang masuk ke partisi *train* dan *test*.
+   - **Bagaimana implementasinya:** Memvalidasi file dengan `PIL.Image`, mengonversi mode warna selain `RGB` ke `/content/data/converted_rgb/`, dan menyaring duplikat berdasarkan nilai *hash* MD5 dari *byte* piksel RGB.
 
-2. **Mengapa** penting
-   **\[Jelaskan Mengapa ?\]**
+2. **Feature Engineering & Target Derivation**
+   - **Apa yang dilakukan:** Menyeragamkan 8 label kategori asal menjadi label biner `0` (*Non-Recyclable*) dan `1` (*Recyclable*), serta mengekstrak **6.180 fitur numerik** (96 fitur *Color Histogram RGB* dan 6.084 fitur *HOG*) untuk setiap citra.
+   - **Mengapa penting:** Menyelaraskan skema label yang berbeda antar-dataset serta menyediakan representasi fitur distribusi warna dan bentuk tepi objek bagi model *Machine Learning* klasik.
+   - **Bagaimana implementasinya:** Pemetaan aturan berbasis folder sumber (`O`/`trash` -> `0`; `R`/material daur ulang/`MJU-Waste` -> `1`), serta ekstraksi histogram 32 *bins* per kanal (`OpenCV`) dan gradien tepi HOG (`scikit-image`) pada citra 224 x 224.
 
-3. **Bagaimana** implementasinya
-   **\[Jelaskan Bagaimana\]**
+3. **Data Splitting**
+   - **Apa yang dilakukan:** Membagi 29.750 citra bersih menjadi **20.825 *Training* (70%)**, **4.462 *Validation* (15%)**, dan **4.463 *Test* (15%)** sebelum transformasi statistik dilakukan.
+   - **Mengapa penting:** Memastikan evaluasi hyperparameter pada *validation set* berlangsung objektif serta menjaga *test set* terisolasi sepenuhnya untuk pengujian akhir.
+   - **Bagaimana implementasinya:** Menggunakan `train_test_split` (`random_state=42`) dengan stratifikasi gabungan kolom `source + "_" + target`, lalu menyimpan metadata masing-masing partisi ke `train_meta.csv`, `val_meta.csv`, dan `test_meta.csv`.
+
+4. **Data Transformation & Augmentation**
+   - **Apa yang dilakukan:** Melakukan standardisasi skala (`StandardScaler`) pada 6.180 fitur klasik, serta mengubah ukuran citra ke `(224, 224, 3)`, menormalisasi nilai piksel ke `[-1.00, 1.00]`, dan menerapkan augmentasi spasial/warna pada *pipeline* citra *training*.
+   - **Mengapa penting:** Mempercepat konvergensi model linier, menyesuaikan skala input citra dengan bobot pralatih *MobileNetV2*, dan meningkatkan ketahanan model terhadap variasi orientasi maupun pencahayaan.
+   - **Bagaimana implementasinya:** Menjalankan `fit_transform` `StandardScaler` hanya pada `X_train_raw` (`classical_features.npz`), serta menyusun *pipeline* `tf.data.Dataset` dengan `mobilenet_v2.preprocess_input` dan layer `RandomFlip`, `RandomRotation`, `RandomZoom`, serta `RandomContrast` khusus `train_ds`.
+
+5. **Data Balancing**
+   - **Apa yang dilakukan:** Menghitung bobot kelas seimbang untuk fungsi kerugian (*loss function*), menghasilkan bobot **`1.0788`** untuk kelas `0` (*Non-Recyclable*) dan **`0.9319`** untuk kelas `1` (*Recyclable*).
+   - **Mengapa penting:** Mengatasi selisih proporsi kelas (*46,35% vs 53,65%*) agar model tidak bias memprediksi kelas mayoritas tanpa merusak distribusi asli data validasi dan pengujian.
+   - **Bagaimana implementasinya:** Menggunakan `compute_class_weight(class_weight="balanced")` secara eksklusif pada `y_train` dan menyimpan hasilnya ke berkas `class_weights.json`.
 
 ## 6. MODELING  **\[M + O\]**
 
@@ -522,7 +639,7 @@ Menggunakan stratified split untuk mempertahankan distribusi kelas:
 
 #### 6.1.1 Deskripsi Model  **\[M\]**
 
-**Nama Model:** \[Nama model, misal: Logistic Regression\]
+**Nama Model: Logistic Regression** 
 
 **Teori Singkat:**
 
@@ -576,7 +693,7 @@ y_pred_baseline = model_baseline.predict(X_test)
 
 #### 6.2.1 Deskripsi Model  **\[M\]**
 
-**Nama Model:** \[Nama model, misal: Random Forest / XGBoost\]
+**Nama Model: Random Forest**
 
 **Teori Singkat:**
 
